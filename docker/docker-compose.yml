@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  dev:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    networks:
+      - wasm-test
+    tty: true
+    stdin_open: true
+    command: "bash"
+    volumes:
+      - ..:/app:cached
+    working_dir: /app
+
+networks:
+  wasm-test:
+    external: true
